@@ -1,0 +1,19 @@
+body{
+  font-family: monospace;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect{
+  color: red;
+}
+
+.guess{
+  border: 2px solid;
+}
+
+.guesses{
+  display: flex;
+}

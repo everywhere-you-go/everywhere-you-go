@@ -7,7 +7,7 @@ const reducer = require('./reducer')
 const {subscribe, dispatch, getState} = createStore
 
 const initialState = {
-  location: {city: },
+  location: {city: null},
   guesses: [
     {correctTemp: 12, guessedTemp: null, correct: false, attempted: false}
   ],
