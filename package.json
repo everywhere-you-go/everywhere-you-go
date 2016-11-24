@@ -30,7 +30,8 @@
     "redux": "^3.6.0",
     "superagent": "^3.0.0",
     "tap-spec": "^4.1.1",
-    "tape": "^4.6.3"
+    "tape": "^4.6.3",
+    "yahoo-weather": "^2.2.2"
   },
   "devDependencies": {
     "deep-freeze": "0.0.1"
