@@ -3,7 +3,8 @@ const {createStore} = require('redux')
 const {render} = require('react-dom')
 
 const reducer = require('./reducer')
-const Guess = require('./views/Guess')
+const Input = require('./views/Input')
+const Questions = require('./views/Questions')
 
 const main = document.querySelector('main')
 const app = document.createElement('div')
@@ -23,7 +24,9 @@ const store = createStore(reducer, initialState)
 
 const App = (props) =>
     <div id='app'>
-        The city is London
+        <p>The city is {props.state.location.city}</p>
+        <Input />
+        <Questions />
     </div>
 
 
