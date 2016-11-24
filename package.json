@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "budo index.js --live --port 4000",
+    "start": "budo --serve bundle.js --css index.css --live --port 4000",
     "test": "node tests/test.js | tap-spec"
   },
   "repository": {
