@@ -14,3 +14,4 @@ function getWeatherData(city) {
 }
 
 getWeatherData('London')
+getWeatherData('Wellington')
