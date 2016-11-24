@@ -16,6 +16,9 @@ module.exports = (state, action) => {
       newState.questions[payload.index].correct = newState.correctTemp === newState.guessedTemp
       newState.questions[payload.index].attempted = true
       return newState
+    case 'INCREMENT_SCORE':
+      newState.score++
+      return newState
     default:
       return newState
   }
