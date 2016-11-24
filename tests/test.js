@@ -6,16 +6,16 @@ const reducer = require('../reducer')
 test('Adds a location to the state', function (t){
   const state = {
     location: {city: null},
-    guesses: [
-      {location: 'Melbourne', correctTemp: 12, guessedTemp: 0, correct: false, attempted: false}
+    questions: [
+      {location: 'Melbourne', correctTemp: 12, guessedTemp: null, correct: false, attempted: false}
     ],
     score: 0
   }
 
   const expected = {
     location: {city: 'Melbourne'},
-    guesses: [
-      {location: 'Melbourne', correctTemp: 12, guessedTemp: 0, correct: false, attempted: false}
+    questions: [
+      {location: 'Melbourne', correctTemp: 12, guessedTemp: null, correct: false, attempted: false}
     ],
     score: 0
   }
@@ -29,10 +29,10 @@ test('Adds a location to the state', function (t){
   t.end()
 })
 
-test('Adds a guess', function(t) {
+test('Adds a question', function(t) {
   const state = {
     location: {city: 'Melbourne'},
-    guesses: [
+    questions: [
       // {location: 'Melbourne', correctTemp: 12, guessedTemp: 0, correct: false, attempted: false}
     ],
     score: 0
@@ -40,16 +40,43 @@ test('Adds a guess', function(t) {
 
   const expected = {
     location: {city: 'Melbourne'},
-    guesses: [
-      {location: 'Melbourne', correctTemp: 12, guessedTemp: 14, correct: false, attempted: true}
+    questions: [
+      {location: 'Melbourne', correctTemp: 12, guessedTemp: null, correct: false, attempted: false}
     ],
     score: 0
   }
 
   freeze(state)
 
-  const actual = reducer(state, {type: 'ADD_GUESS', payload: {correctTemp: 12, guessedTemp: 14, correct: false, attempted: true}})
+  const actual = reducer(state, {type: 'ADD_QUESTION', payload: {correctTemp: 12, guessedTemp: null, correct: false, attempted: false}})
 
-  t.deepEquals(actual, expected, 'Add guess test passing')
+  t.deepEquals(actual, expected, 'Add question test passing')
+  t.end()
+})
+
+test('Attempt a question', function(t) {
+  const state = {
+    location: {city: 'Melbourne'},
+    questions: [
+      {location: 'Melbourne', correctTemp: 12, guessedTemp: null, correct: false, attempted: false},
+      {location: 'Brisbane', correctTemp: 12, guessedTemp: null, correct: false, attempted: false}
+    ],
+    score: 0
+  }
+
+  const expected = {
+    location: {city: 'Melbourne'},
+    questions: [
+      {location: 'Melbourne', correctTemp: 12, guessedTemp: null, correct: false, attempted: false},
+      {location: 'Brisbane', correctTemp: 12, guessedTemp: 12, correct: true, attempted: true}
+    ],
+    score: 0
+  }
+
+  freeze(state)
+
+  const actual = reducer(state, {type: 'ATTEMPT_QUESTION', payload: {guess: 12, index: 1}})
+
+  t.deepEquals(actual, expected, 'Attempt question test passing')
   t.end()
 })

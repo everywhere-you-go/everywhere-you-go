@@ -7,9 +7,14 @@ module.exports = (state, action) => {
     case 'ADD_LOCATION':
       newState.location.city = payload
       return newState
-    case 'ADD_GUESS':
+    case 'ADD_QUESTION':
       payload.location = state.location.city
-      newState.guesses.push(payload)
+      newState.questions.push(payload)
+      return newState
+    case 'ATTEMPT_QUESTION':
+      newState.questions[payload.index].guessedTemp = payload.guess
+      newState.questions[payload.index].correct = newState.correctTemp === newState.guessedTemp
+      newState.questions[payload.index].attempted = true
       return newState
     default:
       return newState
