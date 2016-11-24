@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "budo index.js --live --port 4000",
+    "start": "budo . -d --serve bundle.js --live --port 4000",
     "test": "node tests/test.js | tap-spec"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
   },
   "repository": {
     "type": "git",
