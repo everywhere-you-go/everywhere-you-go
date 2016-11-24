@@ -1,0 +1,38 @@
+{
+  "name": "everywhere-you-go",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "budo index.js --live --port 4000",
+    "test": "node tests/test.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/everywhere-you-go/everywhere-you-go.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/everywhere-you-go/everywhere-you-go/issues"
+  },
+  "homepage": "https://github.com/everywhere-you-go/everywhere-you-go#readme",
+  "dependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
+    "budo": "^9.2.2",
+    "clone": "^2.1.0",
+    "dotenv": "^2.0.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "redux": "^3.6.0",
+    "superagent": "^3.0.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
+  },
+  "devDependencies": {
+    "deep-freeze": "0.0.1"
+  }
+}
