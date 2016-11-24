@@ -10,12 +10,11 @@ const main = document.querySelector('main')
 const app = document.createElement('div')
 main.appendChild(app)
 
-const {subscribe, dispatch, getState} = createStore
 
 const initialState = {
   location: {city: 'London'},
-  guesses: [
-    {correctTemp: 12, guessedTemp: null, correct: false, attempted: false}
+  questions: [
+    {city: 'London', correctTemp: 12, guessedTemp: null, correct: false, attempted: false}
   ],
   score: 0
 }
@@ -24,9 +23,9 @@ const store = createStore(reducer, initialState)
 
 const App = (props) =>
     <div id='app'>
-        <p>The city is {props.state.location.city}</p>
-        <Input />
-        <Questions />
+        <p>The city is {props.state.questions[0].city}</p>
+        <Input dispatch={props.dispatch}/>
+        <Questions dispatch={props.dispatch}/>
     </div>
 
 
@@ -34,7 +33,7 @@ store.subscribe( () => {
   const state = store.getState()
   render(<App
           state={state}
-          dispatch={dispatch}
+          dispatch={store.dispatch}
           />, app)
 })
 
