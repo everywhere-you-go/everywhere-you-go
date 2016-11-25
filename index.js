@@ -23,11 +23,10 @@ const store = createStore(reducer, initialState)
 
 const App = (props) =>
     <div id='app'>
-        <p>The city is {props.state.questions[0].city}</p>
+        <h3>Everywhere you go ...</h3>
         <Input dispatch={props.dispatch}/>
-        <Questions dispatch={props.dispatch}/>
+        <Questions dispatch={props.dispatch} questions={props.state.questions}/>
     </div>
-
 
 store.subscribe( () => {
   const state = store.getState()
