@@ -1,8 +1,12 @@
 const React = require('react')
 
 const Questions = (props) => {
-  return <div>
-          {props.questions.map((question) => <div className='question'>What is the temperature in {question.city}?</div>)}
+  return <div className='questions'>
+          {props.questions.map((question, idx) => <div className='question'>
+          <p>What is the temperature in {question.city}?</p>
+            <input className='guesstemp' id={`question-${idx}`}></input>
+            <button type='submit'>Guess!</button>
+            </div>)}
          </div>
 }
 
