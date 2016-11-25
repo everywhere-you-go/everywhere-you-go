@@ -12,6 +12,10 @@ const Questions = (props) => {
                 var guess = document.getElementById(`question-${idx}`).value
                 // console.log("guess is:", guess)
                 props.dispatch({type: 'ATTEMPT_QUESTION', payload: {index: idx, guess: guess}})
+                props.dispatch({type: 'CHECK_FINISHED'})
+                if (question.correct) {
+                  props.dispatch({type: 'INCREMENT_SCORE'})
+                }
               }}>Guess!</button>
               </div>}) }
            </div>
