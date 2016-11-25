@@ -80,3 +80,30 @@ test('Attempt a question', function(t) {
   t.deepEquals(actual, expected, 'Attempt question test passing')
   t.end()
 })
+
+test('Increment score', function (t) {
+  const state = {
+    location: {city: 'Melbourne'},
+    questions: [
+      {location: 'Melbourne', correctTemp: 12, guessedTemp: null, correct: false, attempted: false},
+      {location: 'Brisbane', correctTemp: 12, guessedTemp: null, correct: false, attempted: false}
+    ],
+    score: 0
+  }
+
+  const expected = {
+    location: {city: 'Melbourne'},
+    questions: [
+      {location: 'Melbourne', correctTemp: 12, guessedTemp: null, correct: false, attempted: false},
+      {location: 'Brisbane', correctTemp: 12, guessedTemp: null, correct: false, attempted: false}
+    ],
+    score: 1
+  }
+
+  freeze(state)
+
+  const actual = reducer(state, {type: 'INCREMENT_SCORE'})
+
+  t.deepEquals(actual, expected, 'correctly incrementing store')
+  t.end()
+})

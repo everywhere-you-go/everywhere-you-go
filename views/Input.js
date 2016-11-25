@@ -9,8 +9,6 @@ const Input = (props) => {
             <button type='submit' className='addquestion' onClick={() => {
               var location = document.getElementById('location').value
               getWeatherData(location, (res) => {
-                console.log("location is:", location);
-                console.log("temp is:", res.item.condition.temp);
                 props.dispatch({type: 'ADD_LOCATION', payload: location})
                 props.dispatch({type: 'ADD_QUESTION', payload: {correctTemp: res.item.condition.temp, guessedTemp: null, correct: false, attempted: false}})
               })
@@ -19,16 +17,3 @@ const Input = (props) => {
 }
 
 module.exports = Input
-
-// onClick={() =>{
-//   getWeatherData('Wellington')
-//     .then((function(response){
-//       dispatch(type: 'ADD_QUESTION', payload: {correctTemp: data.item.condition.temp})
-//   }))
-//     .catch(function (err) {
-//       console.log(err);
-// })
-//
-  // getWeatherData(city, (response) => {
-  //   dispatch({type: 'ADD_QUESTION', payload: {correctTemp: response.item.condition.temp}})
-  // })
