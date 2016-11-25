@@ -18,4 +18,5 @@ body{
 
 .questions{
   display: flex;
+  flex-wrap: wrap;
 }

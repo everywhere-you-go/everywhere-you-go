@@ -4,7 +4,7 @@ const getWeatherData = require('../api')
 
 const Input = (props) => {
   return <div>
-            <p>Enter a city:</p>
+            <h4>Enter a city:</h4>
             <input id='location'></input>
             <button type='submit' className='addquestion' onClick={() => {
               var location = document.getElementById('location').value
@@ -13,7 +13,9 @@ const Input = (props) => {
                 props.dispatch({type: 'ADD_LOCATION', payload: location})
                 props.dispatch({type: 'ADD_QUESTION', payload: {city: location, correctTemp: res.item.condition.temp, guessedTemp: null, correct: false, attempted: false}})
               })
-            }} >Go!</button>
+              props.dispatch({type: 'CHECK_FINISHED'})
+            }
+          } >Go!</button>
           </div>
 }
 

@@ -8,7 +8,7 @@ module.exports = (props) =>{
         <button type='submit' onClick={() => props.dispatch({type:'CLEAR_QUESTIONS'})} >Try Again</button>
     </div>
   } else {
-    return <h4>game in progress</h4>
+    return <h4>game in progress ...</h4>
   }
 
 }
