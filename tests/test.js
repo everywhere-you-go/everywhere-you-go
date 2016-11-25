@@ -107,6 +107,7 @@ test('Increment score', function (t) {
   t.deepEquals(actual, expected, 'correctly incrementing store')
   t.end()
 })
+
 test('If game finised', function (t) {
   const state = {
     location: {city: 'Melbourne'},

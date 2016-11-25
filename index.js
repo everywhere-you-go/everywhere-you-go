@@ -16,7 +16,8 @@ const initialState = {
   questions: [
     {city: 'London', correctTemp: 12, guessedTemp: null, correct: false, attempted: false}
   ],
-  score: 0
+  score: 0,
+  isFinished: false
 }
 
 const store = createStore(reducer, initialState)
