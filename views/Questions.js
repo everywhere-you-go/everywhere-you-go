@@ -1,7 +1,9 @@
 const React = require('react')
 
 const Questions = (props) => {
-  return <p>Hello Questions</p>
+  return <div>
+          {props.questions.map((question) => <div>{question.city}</div>)}
+         </div>
 }
 
 module.exports = Questions
