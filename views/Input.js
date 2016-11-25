@@ -13,7 +13,7 @@ const Input = (props) => {
                 props.dispatch({type: 'ADD_LOCATION', payload: location})
                 props.dispatch({type: 'ADD_QUESTION', payload: {city: location, correctTemp: res.item.condition.temp, guessedTemp: null, correct: false, attempted: false}})
               })
-            }} >Add question</button>
+            }} >Go!</button>
           </div>
 }
 

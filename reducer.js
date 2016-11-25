@@ -12,6 +12,7 @@ module.exports = (state, action) => {
       newState.questions.push(payload)
       return newState
     case 'ATTEMPT_QUESTION':
+      // console.log("payload is", payload);
       newState.questions[payload.index].guessedTemp = payload.guess
       newState.questions[payload.index].correct = newState.correctTemp === newState.guessedTemp
       newState.questions[payload.index].attempted = true
