@@ -2,9 +2,8 @@ const React = require('react')
 
 const Questions = (props) => {
   return <div>
-  <p>Hello Questions</p>
-  <p>First city is: {props.questions[0].city}</p>
-  </div>
+          {props.questions.map((question) => <div>{question.city}</div>)}
+         </div>
 }
 
 module.exports = Questions
