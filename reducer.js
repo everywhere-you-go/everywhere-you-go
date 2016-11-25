@@ -29,6 +29,9 @@ module.exports = (state, action) => {
      })
      newState.isFinished = fiveQuestions && allAttempted
      return newState
+    case 'CLEAR_QUESTIONS':
+      newState.questions = []
+      return newState
     default:
       return newState
   }
