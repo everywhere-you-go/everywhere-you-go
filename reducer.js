@@ -10,7 +10,6 @@ module.exports = (state, action) => {
     case 'ADD_QUESTION':
       payload.location = state.location.city
       newState.questions.push(payload)
-
       return newState
     case 'ATTEMPT_QUESTION':
       // console.log("payload is", payload);
@@ -20,6 +19,19 @@ module.exports = (state, action) => {
       return newState
     case 'INCREMENT_SCORE':
       newState.score++
+      return newState
+    case 'CHECK_FINISHED':
+      let fiveQuestions = newState.questions.length === 5
+      let allAttempted = true
+      newState.questions.forEach((question) => {
+       if (!question.attempted){
+         allAttempted = false
+       }
+     })
+     newState.isFinished = fiveQuestions && allAttempted
+     return newState
+    case 'CLEAR_QUESTIONS':
+      newState.questions = []
       return newState
     default:
       return newState
