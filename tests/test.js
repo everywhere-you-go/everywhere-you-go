@@ -107,3 +107,38 @@ test('Increment score', function (t) {
   t.deepEquals(actual, expected, 'correctly incrementing store')
   t.end()
 })
+test('If game finised', function (t) {
+  const state = {
+    location: {city: 'Melbourne'},
+    questions: [
+      {location: 'Melbourne', correctTemp: 12, guessedTemp: null, correct: false, attempted: true},
+      {location: 'Brisbane', correctTemp: 12, guessedTemp: null, correct: false, attempted: true},
+      {location: 'Brisbane', correctTemp: 12, guessedTemp: null, correct: false, attempted: true},
+      {location: 'Brisbane', correctTemp: 12, guessedTemp: null, correct: false, attempted: true},
+      {location: 'Brisbane', correctTemp: 12, guessedTemp: null, correct: false, attempted: true}
+    ],
+    score: 0,
+    isFinished: false
+  }
+
+  const expected = {
+    location: {city: 'Melbourne'},
+    questions: [
+      {location: 'Melbourne', correctTemp: 12, guessedTemp: null, correct: false, attempted: true},
+      {location: 'Brisbane', correctTemp: 12, guessedTemp: null, correct: false, attempted: true},
+      {location: 'Brisbane', correctTemp: 12, guessedTemp: null, correct: false, attempted: true},
+      {location: 'Brisbane', correctTemp: 12, guessedTemp: null, correct: false, attempted: true},
+      {location: 'Brisbane', correctTemp: 12, guessedTemp: null, correct: false, attempted: true}
+    ],
+    score: 0,
+    isFinished: true
+  }
+
+
+  freeze(state)
+
+  const actual = reducer(state, {type: 'CHECK_FINISHED'})
+
+  t.deepEquals(actual, expected, 'correctly finishing game')
+  t.end()
+})
