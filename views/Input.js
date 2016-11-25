@@ -4,7 +4,7 @@ const getWeatherData = require('../api')
 
 const Input = (props) => {
   return <div>
-            <p>Enter a city:</p>
+            <h4>Enter a city:</h4>
             <input id='location'></input>
             <button type='submit' className='addquestion' onClick={() => {
               var location = document.getElementById('location').value

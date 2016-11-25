@@ -18,14 +18,14 @@ const initialState = {
     {city: 'London', correctTemp: 12, guessedTemp: null, correct: false, attempted: false}
   ],
   score: 0,
-  isFinished: true
+  isFinished: false
 }
 
 const store = createStore(reducer, initialState)
 
 const App = (props) =>
     <div id='app'>
-        <h3>Everywhere you go ...</h3>
+        <h1>Everywhere you go ...</h1>
         <Input dispatch={props.dispatch}/>
         <Questions dispatch={props.dispatch} questions={props.state.questions}/>
         <Finish dispatch={props.dispatch} state={props.state}/>

@@ -12,9 +12,11 @@ module.exports = (state, action) => {
       newState.questions.push(payload)
       return newState
     case 'ATTEMPT_QUESTION':
+      console.log("correct temp is", newState.questions[payload.index].correctTemp);
+      console.log("questions array is", newState.questions)
       // console.log("payload is", payload);
       newState.questions[payload.index].guessedTemp = payload.guess
-      newState.questions[payload.index].correct = newState.correctTemp === newState.guessedTemp
+      newState.questions[payload.index].correct = (newState.questions[payload.index].correctTemp == newState.questions[payload.index].guessedTemp)
       newState.questions[payload.index].attempted = true
       return newState
     case 'INCREMENT_SCORE':
