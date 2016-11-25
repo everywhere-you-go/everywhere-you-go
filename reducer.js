@@ -10,12 +10,10 @@ module.exports = (state, action) => {
     case 'ADD_QUESTION':
       payload.location = state.location.city
       newState.questions.push(payload)
-      // console.log("city in newStore is",newState.questions[1].city)
-      // console.log("its temp is", newState.questions[1].correctTemp)
-      // console.log("newState is", newState);
+
       return newState
     case 'ATTEMPT_QUESTION':
-      console.log("payload is", payload);
+      // console.log("payload is", payload);
       newState.questions[payload.index].guessedTemp = payload.guess
       newState.questions[payload.index].correct = newState.correctTemp === newState.guessedTemp
       newState.questions[payload.index].attempted = true
