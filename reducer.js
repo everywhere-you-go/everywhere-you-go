@@ -19,6 +19,16 @@ module.exports = (state, action) => {
     case 'INCREMENT_SCORE':
       newState.score++
       return newState
+    case 'CHECK_FINISHED':
+      let fiveQuestions = newState.questions.length === 5
+      let allAttempted = true
+      newState.questions.forEach((question) => {
+       if (!question.attempted){
+         allAttempted = false
+       }
+     })
+     newState.isFinished = fiveQuestions && allAttempted
+     return newState
     default:
       return newState
   }
