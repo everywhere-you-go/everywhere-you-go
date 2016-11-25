@@ -10,6 +10,7 @@ module.exports = (state, action) => {
     case 'ADD_QUESTION':
       payload.location = state.location.city
       newState.questions.push(payload)
+      console.log(newState);
       return newState
     case 'ATTEMPT_QUESTION':
       newState.questions[payload.index].guessedTemp = payload.guess
