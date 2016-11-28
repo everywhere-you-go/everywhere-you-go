@@ -2,10 +2,11 @@ const weather = require('yahoo-weather')
 
 module.exports = getWeatherData
 
-function getWeatherData(city, callback) {
-  weather(city).then(data => {
-    callback(data)
-  }).catch(err => {
-    console.log(err);
-  })
+/** Get weather data returns a promise **/
+function getWeatherData (city) {
+  return weather(city)
 }
+
+// getWeatherData('Wellington')
+//   .then(response => console.log(response.item.condition.temp))
+//   .catch(error => console.log(error))
