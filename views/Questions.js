@@ -1,6 +1,6 @@
 const React = require('react')
 
-// const UnansweredQuestion = require('UnansweredQuestion')
+const AnsweredQuestion = require('./AnsweredQuestion')
 
 const Questions = ({dispatch, questions}) => {
   return (
@@ -8,17 +8,21 @@ const Questions = ({dispatch, questions}) => {
       {questions.map((question, idx) => {
         var customClass = (question.attempted && question.correct) ? 'correct' : 'incorrect'
         var setClass = question.attempted ? customClass : ''
-
         function attemptQuestion (e) {
           e.preventDefault()
           var guess = document.getElementById(`question-${idx}`).value
           dispatch({type: 'ATTEMPT_QUESTION', payload: {index: idx, guess: guess}})
         }
+        if(question.attempted) {
+          return AnsweredQuestion(question)
+        }
         return(
           <div className={`question ${setClass}`} key={idx}>
             <p>What is the temperature in {question.city}?</p>
-            <input className='guesstemp' id={`question-${idx}`}></input>
-            <button type='submit' onClick={attemptQuestion}>Guess!</button>
+            <form>
+              <input className='guesstemp' id={`question-${idx}`}></input>
+              <input type='submit' onClick={attemptQuestion} label='Guess!'></input>
+            </form>
           </div>
       )}
     )}

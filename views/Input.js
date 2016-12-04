@@ -20,6 +20,20 @@ const Input = (props) => {
       })
       .catch(error => console.log(error))
   }
+  function create5RandomQuestions (e) {
+    e.preventDefault()
+    var randomPromises = []
+    for (var i = 0; i < 5; i++) {
+      randomPromises.push(getWeatherData(citiesArray[Math.floor(Math.random() * citiesArray.length)]))
+    }
+    console.log('randomPromises:', randomPromises)
+    Promise.all(randomPromises)
+      .then(responses => {
+        responses.forEach(response => {
+          props.dispatch({type: 'ADD_QUESTION', payload: {city: response.location.city, correctTemp: response.item.condition.temp}})
+        })
+      })
+  }
   function clearQuestions (e) {
     e.preventDefault()
     props.dispatch({type: 'CLEAR_QUESTIONS'})
@@ -34,6 +48,7 @@ const Input = (props) => {
       </form>
       <button onClick={createRandomQuestion}>Random</button>
       <button onClick={clearQuestions}>Clear Questions</button>
+      <button onClick={create5RandomQuestions}>Generate All Questions</button>
     </div>
   )
 }

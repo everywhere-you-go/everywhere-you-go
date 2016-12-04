@@ -6,7 +6,7 @@ module.exports = (state, action) => {
   const {questions, score, isFinished} = newState
   switch (type) {
     case 'ADD_QUESTION':
-      if (questions.length < 5){
+      if (questions.length < 10){
         var question = {guessedTemp: null, correct: false, attempted: false, correctTemp: null}
         question.city = payload.city
         question.correctTemp = payload.correctTemp

@@ -25,9 +25,9 @@ const store = createStore(reducer, initialState)
 const App = (props) =>
     <div id='app'>
         <h1 className='header'>Everywhere you go ...</h1>
+        <Finish dispatch={props.dispatch} state={props.state}/>
         <Input dispatch={props.dispatch}/>
         <Questions dispatch={props.dispatch} questions={props.state.questions}/>
-        <Finish dispatch={props.dispatch} state={props.state}/>
     </div>
 
 store.subscribe( () => {
