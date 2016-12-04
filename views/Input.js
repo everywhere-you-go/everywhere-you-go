@@ -1,5 +1,5 @@
 const React = require('react')
-const getWeatherData = require('../api')
+const getWeatherData = require('../api/getWeather')
 
 const Input = (props) => {
   return (
