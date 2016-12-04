@@ -5,7 +5,7 @@ const Questions = (props) => {
     <div className='questions'>
       {props.questions.map((question, idx) => {
       var customClass = (question.attempted && question.correct) ? 'correct' : 'incorrect'
-      var setClass = question.attempted ? customClass : ""
+      var setClass = question.attempted ? customClass : ''
       return <div className={`question ${setClass}`} key={idx}>
       <p>What is the temperature in {question.city}?</p>
       <input className='guesstemp' id={`question-${idx}`}></input>
@@ -15,7 +15,7 @@ const Questions = (props) => {
         props.dispatch({type: 'CHECK_FINISHED'})
         props.dispatch({type: 'CALCULATE_SCORE'})
       }}>Guess!</button>
-      </div>}) }
+      </div> }) }
       </div>
   )
 }
