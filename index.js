@@ -11,7 +11,6 @@ const main = document.querySelector('main')
 const app = document.createElement('div')
 main.appendChild(app)
 
-
 const initialState = {
   location: {city: 'London'},
   questions: [
@@ -25,7 +24,7 @@ const store = createStore(reducer, initialState)
 
 const App = (props) =>
     <div id='app'>
-        <h1>Everywhere you go ...</h1>
+        <h1 className='header'>Everywhere you go ...</h1>
         <Input dispatch={props.dispatch}/>
         <Questions dispatch={props.dispatch} questions={props.state.questions}/>
         <Finish dispatch={props.dispatch} state={props.state}/>
@@ -33,10 +32,7 @@ const App = (props) =>
 
 store.subscribe( () => {
   const state = store.getState()
-  render(<App
-          state={state}
-          dispatch={store.dispatch}
-          />, app)
+  render(<App state={state} dispatch={store.dispatch}/>, app)
 })
 
 store.dispatch({type: 'INIT'})

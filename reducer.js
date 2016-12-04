@@ -17,23 +17,12 @@ module.exports = (state, action) => {
       questions[payload.index].guessedTemp = payload.guess
       questions[payload.index].correct = (questions[payload.index].correctTemp === questions[payload.index].guessedTemp)
       questions[payload.index].attempted = true
+      newState.isFinished = gameIsFinished(newState.questions)
+      newState.score = calcScore(newState.questions)
       return newState
     case 'CALCULATE_SCORE':
-      newState.score = questions.reduce((previous, current) => {
-        if (current.correct) return previous + 1
-        else return previous
-      }, 0)
+      newState.score = calcScore(newState.questions)
       return newState
-    case 'CHECK_FINISHED':
-      let fiveQuestions = questions.length === 5
-      let allAttempted = true
-      questions.forEach((question) => {
-       if (!question.attempted) {
-         allAttempted = false
-       }
-     })
-     newState.isFinished = fiveQuestions && allAttempted
-     return newState
     case 'CLEAR_QUESTIONS':
       newState.questions = []
       newState.isFinished = false
@@ -41,4 +30,21 @@ module.exports = (state, action) => {
     default:
       return newState
   }
+}
+
+function gameIsFinished(arr) {
+  let allAttempted = true
+  arr.forEach((question) => {
+     if (!question.attempted) {
+       allAttempted = false
+     }
+   })
+ return arr.length === 5 && allAttempted
+}
+
+function calcScore(arr) {
+  return arr.reduce((previous, current) => {
+    if (current.correct) return previous + 1
+    else return previous
+  }, 0)
 }
