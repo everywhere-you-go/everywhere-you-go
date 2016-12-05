@@ -6,16 +6,14 @@ const reducer = require('./reducer')
 const Input = require('./views/Input')
 const Questions = require('./views/Questions')
 const Finish = require('./views/Finish')
+const Nav = require('./views/Nav')
 
 const main = document.querySelector('main')
 const app = document.createElement('div')
 main.appendChild(app)
 
 const initialState = {
-  location: {city: 'London'},
-  questions: [
-    {city: 'London', correctTemp: 12, guessedTemp: null, correct: false, attempted: false}
-  ],
+  questions: [],
   score: 0,
   isFinished: false
 }
@@ -24,10 +22,11 @@ const store = createStore(reducer, initialState)
 
 const App = (props) =>
     <div id='app'>
-        <h1 className='header'>Everywhere you go ...</h1>
-        <Finish dispatch={props.dispatch} state={props.state}/>
-        <Input dispatch={props.dispatch}/>
-        <Questions dispatch={props.dispatch} questions={props.state.questions}/>
+      <Nav/>
+      <h1 className='header'>Everywhere you go ...</h1>
+      <Input dispatch={props.dispatch}/>
+      <Finish dispatch={props.dispatch} state={props.state}/>
+      <Questions dispatch={props.dispatch} questions={props.state.questions}/>
     </div>
 
 store.subscribe( () => {

@@ -1,4 +1,5 @@
 const React = require('react')
+const ReactCSSTransitionGroup = require('react-addons-css-transition-group')
 
 const AnsweredQuestion = require('./AnsweredQuestion')
 
@@ -13,10 +14,10 @@ const Questions = ({dispatch, questions}) => {
           var guess = document.getElementById(`question-${idx}`).value
           dispatch({type: 'ATTEMPT_QUESTION', payload: {index: idx, guess: guess}})
         }
-        if(question.attempted) {
-          return AnsweredQuestion(question)
+        if (question.attempted) {
+          return AnsweredQuestion(question, idx)
         }
-        return(
+        return (
           <div className={`question ${setClass}`} key={idx}>
             <p>What is the temperature in {question.city}?</p>
             <form>
@@ -24,7 +25,7 @@ const Questions = ({dispatch, questions}) => {
               <input type='submit' onClick={attemptQuestion} label='Guess!'></input>
             </form>
           </div>
-      )}
+      ) }
     )}
     </div>
   )

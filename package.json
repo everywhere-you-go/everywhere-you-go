@@ -31,6 +31,7 @@
     "clone": "^2.1.0",
     "dotenv": "^2.0.0",
     "react": "^15.4.1",
+    "react-addons-transition-group": "^15.4.1",
     "react-dom": "^15.4.1",
     "redux": "^3.6.0",
     "superagent": "^3.0.0",

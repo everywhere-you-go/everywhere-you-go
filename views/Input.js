@@ -15,7 +15,6 @@ const Input = (props) => {
     var randomCity = citiesArray[Math.floor(Math.random() * citiesArray.length)]
     getWeatherData(randomCity)
       .then(response => {
-        console.log(response)
         props.dispatch({type: 'ADD_QUESTION', payload: {city: randomCity, correctTemp: response.item.condition.temp}})
       })
       .catch(error => console.log(error))
@@ -26,10 +25,10 @@ const Input = (props) => {
     for (var i = 0; i < 5; i++) {
       randomPromises.push(getWeatherData(citiesArray[Math.floor(Math.random() * citiesArray.length)]))
     }
-    console.log('randomPromises:', randomPromises)
     Promise.all(randomPromises)
       .then(responses => {
         responses.forEach(response => {
+          console.log("response", response.item.condition.temp)
           props.dispatch({type: 'ADD_QUESTION', payload: {city: response.location.city, correctTemp: response.item.condition.temp}})
         })
       })
