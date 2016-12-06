@@ -1,11 +1,13 @@
 const React = require('react')
 const ReactCSSTransitionGroup = require('react-addons-css-transition-group')
+const {Motion, spring} = require('react-motion')
 
 const AnsweredQuestion = require('./AnsweredQuestion')
 
 const Questions = ({dispatch, questions}) => {
   return (
     <div className='questions'>
+      <ReactCSSTransitionGroup className='questions' transitionName="question" transitionEnterTimeout={700} transitionLeaveTimeout={700}>
       {questions.map((question, idx) => {
         var customClass = (question.attempted && question.correct) ? 'correct' : 'incorrect'
         var setClass = question.attempted ? customClass : ''
@@ -27,6 +29,7 @@ const Questions = ({dispatch, questions}) => {
           </div>
       ) }
     )}
+      </ReactCSSTransitionGroup>
     </div>
   )
 }
